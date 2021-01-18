@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import MenuBar from "./MenuBar";
 import { Profile, Photos, Cocktails, Pokemon } from "./pages";
 
 function MainBox() {
+ const [selection, setSelection] = useState("Profile")
   /*
     Replace the code below! Depending on what menu item is selected in the menu, 
     I should render either a Profile, Photos, Cocktails, or Pokemon component.
@@ -12,11 +13,26 @@ function MainBox() {
     - Where should these methods be called?
   */
 
-  const detailsToDisplay = <div>Hi, I'm a div!</div>;
+ function  handleSelection(newSelection) {
+   console.log(newSelection)
+    setSelection(newSelection)
+  }
 
+
+  let detailsToDisplay = <Profile/>
+
+  if (selection === "Profile") {
+    detailsToDisplay = <Profile/>;
+  } else if (selection === "Photo") {
+    detailsToDisplay = <Photos/>;
+  } else if (selection === "Cocktail") {
+    detailsToDisplay = <Cocktails/>;
+  } else if (selection === "Pokemon") {
+    detailsToDisplay = <Pokemon/>
+  }
   return (
     <div>
-      <MenuBar />
+      <MenuBar selection={selection} onSelection={handleSelection}/>
       {detailsToDisplay}
     </div>
   );

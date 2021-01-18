@@ -1,6 +1,7 @@
 import React from "react";
 
-function MenuBar(props) {
+function MenuBar({selection, onSelection}) {
+ 
   /*
 
   The 'span' tags below are the menu items. Think about the way a menu 
@@ -12,21 +13,23 @@ function MenuBar(props) {
 
   */
 
+   
+
   return (
     <div className="ui four item menu">
-      <span className="item active">
+      <span className={selection === "Profile" ? "item active" : "item"} id="Profile" onClick={(evt) => onSelection(evt.target.id)}>
         <i className="user large icon" />
       </span>
 
-      <span className="item">
+      <span className={selection === "Photo" ? "item active" : "item"} id="Photo" onClick={(evt) => onSelection(evt.target.id)}>
         <i className="photo large icon" />
       </span>
 
-      <span className="item">
+      <span className={selection === "Cocktail" ? "item active" : "item"} id="Cocktail" onClick={(evt) => onSelection(evt.target.id)}>
         <i className="cocktail large icon" />
       </span>
 
-      <span className="item">
+      <span className={selection === "Pokemon" ? "item active" : "item"} id="Pokemon" onClick={(evt) => onSelection(evt.target.id)}>
         <i className=" themeisle large icon" />
       </span>
     </div>
